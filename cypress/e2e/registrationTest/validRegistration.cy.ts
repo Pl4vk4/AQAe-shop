@@ -14,16 +14,8 @@ describe('Valid Registration', () => {
         const dashboard = new Dashboard();
 
         cy.visit(URLs.base);
-        homePage.logIn().click();
+        homePage.register().click();
 
-        loginPage.emailField().type(LoginCredentials.validEmail);
-        loginPage.passwordField().type(LoginCredentials.validPass);
-        loginPage.signInButton().click();
-
-        cy.url().should('eq', URLs.dashboard);
-
-        dashboard.hamburgerMenu().click();
-        dashboard.logoutButton().click();
 
     }
 }
