@@ -8,7 +8,7 @@ import { LoginCredentials } from "../../fixtures/testData";
 
 describe('Valid Login', () => {
 
-    it ('should validate user can log in'), ()=> {
+    it('should validate user can log in', () => {
 
         const loginPage = new LoginPage();
         const homePage = new HomePage();
@@ -26,6 +26,6 @@ describe('Valid Login', () => {
         dashboard.hamburgerMenu().click();
         dashboard.logoutButton().click();
 
-    }
+    });
 }
 )

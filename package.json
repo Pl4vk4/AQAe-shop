@@ -1,5 +1,16 @@
 {
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:login": "cypress run --spec 'cypress/e2e/loginTests/*.ts'",
+    "test:registration": "cypress run --spec 'cypress/e2e/registrationTest/*.ts'",
+    "test:all": "cypress run"
+  },
   "devDependencies": {
-    "cypress": "^14.5.0"
+    "@cypress/webpack-preprocessor": "^6.0.4",
+    "@types/node": "^24.0.3",
+    "cypress": "^14.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
   }
 }
