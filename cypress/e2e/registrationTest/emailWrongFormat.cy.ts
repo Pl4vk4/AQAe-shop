@@ -2,6 +2,7 @@ import { HomePage } from "../../support/pageObject/homePage";
 import { RegistrationPage } from "../../support/pageObject/registrationPage";
 import { URLs } from "../../fixtures/links";
 import { generateUser } from "../../fixtures/testData";
+import { Warnings } from "../../fixtures/testData";
 
 describe('Invalid email format', () => {
     it('should validate user cannot register with invalid email format', () => {
@@ -30,17 +31,19 @@ describe('Invalid email format', () => {
         
         // Verify registration fails
         cy.url().should('include', 'register'); // Should still be on registration page
+        registrationPage.warningBelowField().contains(Warnings.invalidEmailFormat);
+
         
         // Verify validation error for email field
-        registrationPage.emailField().invoke('prop', 'validationMessage')
-            .should('not.be.empty'); // Browser validation message should exist
+        //registrationPage.emailField().invoke('prop', 'validationMessage')
+          //  .should('not.be.empty'); // Browser validation message should exist
         
         // Check for specific error message if the app shows custom validation messages
-        cy.get('body').then($body => {
-            if ($body.find('.text-sm').length > 0) {
+        //cy.get('body').then($body => {
+           // if ($body.find('.text-sm').length > 0) {
                 // Look for validation messages related to email format
-                cy.contains('.text-sm', /email|Email|format|invalid/).should('be.visible');
-            }
-        });
+               // cy.contains('.text-sm', /email|Email|format|invalid/).should('be.visible');
+           // }
+        //});
     });
 });

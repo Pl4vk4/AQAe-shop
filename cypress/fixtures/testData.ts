@@ -6,7 +6,12 @@ export const LoginCredentials = {
 
 export const Warnings = {
     invalidCredential: 'The email address or password you entered is invalid',
-
+    emptyUserName: 'The username field is required.',
+    emptyPassword: 'The password field is required.',
+    emptyEmail: 'The email field is required.',
+    invalidEmailFormat: 'The email field format is invalid.',
+    passwordTooShort: 'The password field must be at least 6 characters.',
+    takenEmail: 'The email has already been taken.',
 }
 
 export const generateUser = () => {
@@ -18,3 +23,9 @@ export const generateUser = () => {
       password: `Pass${randomString}!123`,
     };
   };
+
+
+  export const searchItem = {
+   existingItem: '3080',
+   nonExisting: 'rtrtr',
+}

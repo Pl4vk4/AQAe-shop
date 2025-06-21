@@ -2,6 +2,7 @@ import { HomePage } from "../../support/pageObject/homePage";
 import { RegistrationPage } from "../../support/pageObject/registrationPage";
 import { URLs } from "../../fixtures/links";
 import { generateUser } from "../../fixtures/testData";
+import { Warnings } from "../../fixtures/testData";
 
 describe('Empty username', () => {
     it('should validate user cannot register with empty username', () => {
@@ -29,17 +30,19 @@ describe('Empty username', () => {
         
         // Verify registration fails
         cy.url().should('include', 'register'); // Should still be on registration page
+        registrationPage.warningBelowField().contains(Warnings.emptyUserName);
+        
         
         // Verify validation error for username field
-        registrationPage.usernameField().invoke('prop', 'validationMessage')
-            .should('not.be.empty'); // Browser validation message should exist
+        //registrationPage.usernameField().invoke('prop', 'validationMessage')
+            //.should('not.be.empty'); // Browser validation message should exist
         
         // Check for specific error message if the app shows custom validation messages
-        cy.get('body').then($body => {
-            if ($body.find('.text-sm').length > 0) {
+       // cy.get('body').then($body => {
+            ///if ($body.find('.text-sm').length > 0) {
                 // Look for validation messages related to username
-                cy.contains('.text-sm', /username|Username/).should('be.visible');
-            }
-        });
+                //cy.contains('.text-sm', /username|Username/).should('be.visible');
+           // }
+        //});
     });
 });

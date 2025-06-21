@@ -2,6 +2,7 @@ import { HomePage } from "../../support/pageObject/homePage";
 import { RegistrationPage } from "../../support/pageObject/registrationPage";
 import { URLs } from "../../fixtures/links";
 import { generateUser } from "../../fixtures/testData";
+import { Warnings } from "../../fixtures/testData";
 
 describe('Password shorter than 6 characters', () => {
     it('should validate user cannot register with a password shorter than 6 characters', () => {
@@ -30,6 +31,8 @@ describe('Password shorter than 6 characters', () => {
         
         // Verify registration fails
         cy.url().should('include', 'register'); // Should still be on registration page
+        registrationPage.warningBelowField().contains(Warnings.passwordTooShort);
+        
         
         // Check for validation error on password field
         // Some browsers might have built-in validation for minlength
